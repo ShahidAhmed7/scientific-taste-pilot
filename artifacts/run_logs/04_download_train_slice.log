@@ -1,0 +1,16 @@
+# Command and output copied verbatim from the session log; timestamps and dates removed. Paths shortened:
+#   <workdir> = folder holding the data files and scripts; <venv> = the Python environment; <other-project> = an unrelated project folder.
+
+$ cd <workdir> && curl -sL -A "research-reader/0.1" -r 0-1200000000 https://huggingface.co/datasets/OpenMOSS-Team/SciJudgeBench/resolve/main/train.jsonl -o train_part.jsonl; ls -la train_part.jsonl; wc -l train_part.jsonl; python3 -c "
+import json
+n=0;yrs={}
+for l in open('train_part.jsonl'):
+  try: r=json.loads(l)
+  except: continue
+  n+=1; yrs[r.get('year')]=yrs.get(r.get('year'),0)+1
+print(n, sorted(yrs.items())[:40])"
+
+--- output ---
+-rw-r--r--@ 1 shahidahmed  wheel  1200000001 train_part.jsonl
+  222713 train_part.jsonl
+222713 [(None, 222713)]

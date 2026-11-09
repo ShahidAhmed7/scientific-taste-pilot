@@ -1,0 +1,90 @@
+# Command and output copied verbatim from the session log; timestamps and dates removed. Paths shortened:
+#   <workdir> = folder holding the data files and scripts; <venv> = the Python environment; <other-project> = an unrelated project folder.
+
+$ cd <workdir> && for f in test_ood_year test_extended test_ood_iclr; do curl -sL -A "research-reader/0.1" -o $f.jsonl https://huggingface.co/datasets/OpenMOSS-Team/SciJudgeBench/resolve/main/$f.jsonl; wc -l $f.jsonl; done; curl -sL -A "research-reader/0.1" https://huggingface.co/datasets/OpenMOSS-Team/SciJudgeBench/resolve/main/README.md | sed -n 1,80p | cut -c1-200; for v in .venv-benchmark .venv-mlx .venv-inference; do <other-project>/$v/bin/python -c "import sklearn,numpy;print('$v sklearn',sklearn.__version__)" 2>/dev/null; done
+
+--- output ---
+     904 test_ood_year.jsonl
+    8830 test_extended.jsonl
+     611 test_ood_iclr.jsonl
+---
+language:
+- en
+license: apache-2.0
+task_categories:
+- text-classification
+tags:
+- scientific-taste
+- GRPO
+configs:
+- config_name: default
+  data_files:
+  - split: train
+    path: train.jsonl
+  - split: test
+    path: test.jsonl
+  - split: test_extended
+    path: test_extended.jsonl
+  - split: test_ood_iclr
+    path: test_ood_iclr.jsonl
+  - split: test_ood_year
+    path: test_ood_year.jsonl
+  features:
+  - name: messages
+    list:
+      struct:
+      - name: role
+        dtype: string
+      - name: content
+        dtype: string
+  - name: correct_answer
+    dtype: string
+  - name: paper_a_citations
+    dtype: int64
+  - name: paper_b_citations
+    dtype: int64
+  - name: paper_a_title
+    dtype: string
+  - name: paper_b_title
+    dtype: string
+  - name: paper_a_date
+    dtype: timestamp[s]
+  - name: paper_b_date
+    dtype: timestamp[s]
+  - name: paper_a_category
+    dtype: string
+  - name: paper_b_category
+    dtype: string
+  - name: paper_a_subcategory
+    dtype: string
+  - name: paper_b_subcategory
+    dtype: string
+  - name: paper_a_arxiv_id
+    dtype: string
+  - name: paper_b_arxiv_id
+    dtype: string
+  - name: paper_a_abstract
+    dtype: string
+  - name: paper_b_abstract
+    dtype: string
+  - name: paper_a_rating
+    dtype: float64
+  - name: paper_b_rating
+    dtype: float64
+  - name: year
+    dtype: int64
+size_categories:
+- 100K<n<1M
+---
+# SciJudgeBench Dataset
+
+Training and evaluation data for scientific paper citation prediction, from the paper [AI Can Learn Scientific Taste](https://arxiv.org/abs/2603.14473).
+
+Given two academic papers (title, abstract, publication date), the task is to predict which paper has a higher citation count.
+
+Resources: [Project page](https://tongjingqi.github.io/AI-Can-Learn-Scientific-Taste/), [GitHub repository](https://github.com/tongjingqi/AI-Can-Learn-Scientific-Taste), [SciJudge-4B-2605](https://hug
+
+## Dataset Splits
+
+| Split | Examples | Description |
+.venv-inference sklearn 1.9.1

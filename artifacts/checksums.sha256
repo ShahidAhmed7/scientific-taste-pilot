@@ -1,0 +1,13 @@
+# SHA-256, computed from the exact files the runs used (the scripts and their working-folder data).
+b264d44e43d0e4d6ce704d45f827179cf45982d4884d2adf2f564587b641c811  original_scripts/pilot.py
+e37d3aa6a70af5cd5cfd6652e6a9acf40c880494a708901aaf1fd726f0e4275e  original_scripts/pilot2.py
+b0c831f2d43dbc993f36f1134f2115e8032019e1343d2557c2846bb85b01b767  test.jsonl
+ce0c9503c4563b7d6f7f325bb67a3dc1265c9682ac4f5fd873bd3e8c3902a5e4  test_ood_year.jsonl
+9f85c196c1ea87bdb662d3c1e198e9baf36dfc195cfd1fe93ba040b2cf620438  test_extended.jsonl
+5eb38378a47a57d6dd7d27bb335a462fa93c7991bb509d7fbb985e8972871f54  train_part.jsonl
+#
+# Remote LFS SHA-256 at OpenMOSS-Team/SciJudgeBench main = 1a4cb0f3410526adaf54ac1b94150bdfe94413d5:
+#   test.jsonl           b0c831f2d43dbc993f36f1134f2115e8032019e1343d2557c2846bb85b01b767  (matches)
+#   test_ood_year.jsonl  ce0c9503c4563b7d6f7f325bb67a3dc1265c9682ac4f5fd873bd3e8c3902a5e4  (matches)
+#   test_extended.jsonl  9f85c196c1ea87bdb662d3c1e198e9baf36dfc195cfd1fe93ba040b2cf620438  (matches)
+#   train.jsonl          b01832f8aa1a0d6640814982356aa441ee0d224fb6a05b13d1e732b09e6fa10f  (full file, 3,877,780,011 bytes; train_part.jsonl is its first 1,200,000,001 bytes, not hash-checked)
